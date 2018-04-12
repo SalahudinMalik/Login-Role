@@ -1,0 +1,19 @@
+<div class="animated fadeIn">
+  <h5>Dashboard Works</h5>
+  <ng-container [ngSwitch]="true">
+      <div *ngSwitchCase="userType == 'Agent'">
+        
+        Agent
+      </div>
+      <div *ngSwitchCase="userType == 'Member'">
+        Member
+      </div>
+      <div *ngSwitchCase="userType == 'Owner'">
+        Owner
+      </div>
+      
+      <!-- <div *ngSwitchDefault>Third</div> -->
+    </ng-container>
+  
+ </div>
+ 
