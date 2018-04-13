@@ -10,18 +10,28 @@ import {DataService} from '../data.service';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
-
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { NgProgressModule } from 'ngx-progressbar';
+import { DatePipe } from '@angular/common';
+import { ChartJSComponent } from './chartjs.component';
 @NgModule({
   imports: [CommonModule,NgbModule,
     DashboardRoutingModule,
     ChartsModule,
     MatButtonModule,
     MatCheckboxModule,
-    //SelectionModel,
+    MatInputModule,
+    MatFormFieldModule,
+    NgProgressModule,
     MatTableModule,
     CdkTableModule
   ],
-  declarations: [ DashboardComponent ],
-  providers : [DataService]
+  exports : [
+    CommonModule,
+    DashboardComponent
+  ],
+  declarations: [ DashboardComponent , ChartJSComponent],
+  providers : [DataService , DatePipe]
 })
 export class DashboardModule { }

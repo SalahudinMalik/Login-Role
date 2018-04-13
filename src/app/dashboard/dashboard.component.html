@@ -1,15 +1,23 @@
+<ng-progress [positionUsing]="'translate3d'" [minimum]="0.10" [maximum]="1"
+[speed]="100" [showSpinner]="true" [direction]="'leftToRightIncreased'"
+[color]="'#20a8d8'" [trickleSpeed]="120" [thick]="false" [ease]="'linear'"
+></ng-progress>
+
+
 <div class="animated fadeIn">
-  <h5>Dashboard Works</h5>
   <ng-container [ngSwitch]="true">
       <div *ngSwitchCase="userType == 'Agent'">
         
         Agent
       </div>
       <div *ngSwitchCase="userType == 'Member'">
-        Member
+        <div class="block">
+        
+      </div>
       </div>
       <div *ngSwitchCase="userType == 'Owner'">
-        Owner
+        
+        <charts></charts>
       </div>
       
       <!-- <div *ngSwitchDefault>Third</div> -->

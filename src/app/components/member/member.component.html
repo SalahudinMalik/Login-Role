@@ -1,0 +1,68 @@
+<div class="animated fadeIn ">
+  <p class="block pl-1"> Installment Due in {{now|date: 'MMMM'}}</p>
+  <div class="example-container mat-elevation-z8">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  
+    <mat-table #table [dataSource]="dataSource">
+  
+    
+      <ng-container matColumnDef="code">
+        <mat-header-cell *matHeaderCellDef> Deal Code </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.code}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="dealRef">
+        <mat-header-cell *matHeaderCellDef> Deal Ref </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dealRef}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="plotCode">
+        <mat-header-cell *matHeaderCellDef> Plot Code </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.plotCode}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="plotRef">
+        <mat-header-cell *matHeaderCellDef> Plot Ref </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.plotRef}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sectorName">
+        <mat-header-cell *matHeaderCellDef> Sector </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.sectorName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="schemeName">
+        <mat-header-cell *matHeaderCellDef> Scheme </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.schemeName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="installmentNo">
+        <mat-header-cell *matHeaderCellDef> Inst. No </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.installmentNo}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="instDueDate">
+        <mat-header-cell *matHeaderCellDef> Due Date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.instDueDate}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="payable">
+        <mat-header-cell *matHeaderCellDef> Payable </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.payable}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="paid">
+        <mat-header-cell *matHeaderCellDef> Paid </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.paid}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="balance">
+        <mat-header-cell *matHeaderCellDef> Balance </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.balance}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  
+</div>

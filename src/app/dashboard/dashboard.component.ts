@@ -3,10 +3,37 @@ import { Router } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DataService} from '../data.service';
 import { DatePipe } from '@angular/common';
+import { CdkTableModule } from '@angular/cdk/table';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatTableDataSource} from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
+import {MatTableModule} from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
 
 @Component({
   templateUrl: 'dashboard.component.html',
   styles : [`
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
   
   `],
   providers: [DatePipe]
@@ -15,11 +42,15 @@ export class DashboardComponent implements OnInit {
 
   public userName = localStorage.getItem('userName');
   public userType = localStorage.getItem('userType');
+  public userCode = localStorage.getItem('userCode');
   public now:Date = new Date();
   private startDate:Date;
   private endDate:Date;
-  private strDueDateCriteria:any;
-  private strODueDateCriteria:any;
+  public strDueDateCriteria:any;
+  public strODueDateCriteria:any;
+
+
+
   // var now:Date = new Date();
 	// 			startDate = new Date(now.fullYear, now.month, 1);
 	// 			endDate = new Date(now.fullYear, ++now.month, 0);
@@ -27,19 +58,30 @@ export class DashboardComponent implements OnInit {
 
   constructor( private dataService:DataService,
                private datePipe: DatePipe
-   ) { }
+   ) { 
+
+      
+   this.startDate = new Date(this.now.getFullYear() , this.now.getMonth() , 1);
+   this.endDate = new Date(this.now.getFullYear() , this.now.getMonth()+1 , 0);
+    
+   }
   public brandPrimary = '#20a8d8';
   public brandSuccess = '#4dbd74';
   public brandInfo = '#63c2de';
   public brandWarning = '#f8cb00';
-  public brandDanger = '#f86c6b';
+  public brandDanger = '#f86c6b'; 
 
  
    ngOnInit(){
-    this.startDate = new Date(this.now.getFullYear() , this.now.getMonth() , 1);
-    this.endDate = new Date(this.now.getFullYear() , this.now.getMonth()+1 , 0);
-    this.validateDate();
-    if(this.userType == 'Member'){
+   
+    // this.validateDate();
+    
+    // if(this.userType == 'Member'){
+    //   this.dataToSave = JSON.stringify({"data" :{ code ,dateCiteria}});
+    //   this.dataService.getMemberData(this.dataToSave)
+    //     .subscribe(data =>{
+    //       console.log(data);
+    //     });
       // strDueDateCriteria = "";
 			// 	strODueDateCriteria = "";
 			// 	var sDate:String = "";
@@ -56,7 +98,7 @@ export class DashboardComponent implements OnInit {
 			// 		strDueDateCriteria = " BETWEEN TO_DATE('"+sDate+"', '"+parentApplication.appParams.DATE_FORMAT+"') AND TO_DATE('"+eDate+ "', '"+parentApplication.appParams.DATE_FORMAT+"'))";
 			// 	}
 				
-    }
+   // }
 
     
    }
@@ -80,7 +122,8 @@ export class DashboardComponent implements OnInit {
 				}
 				if(this.startDate.toString().length > 0  &&  this.endDate.toString().length > 0){
 					this.strDueDateCriteria = " BETWEEN TO_DATE('"+sDate+"', 'dd/MM/yyyy') AND TO_DATE('"+eDate+ "', 'dd/MM/yyyy'))";
-				}
+        }
+       
   }
 
   // dropdown buttons
@@ -95,4 +138,3 @@ export class DashboardComponent implements OnInit {
   /** Selects all rows if they are not all selected; otherwise clear selection. */
  
 }
-

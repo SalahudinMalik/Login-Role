@@ -15,6 +15,7 @@ export class FullLayoutComponent implements OnInit {
   public status: {isopen: boolean} = {isopen: false};
   public userName = localStorage.getItem('userName');
   public userType = localStorage.getItem('userType');
+ 
 
 
   constructor (private authService:AuthService,

@@ -98,6 +98,8 @@ export class LoginComponent implements OnInit{
           console.log('data1  ' +JSON.stringify(data1))
             localStorage.setItem('userName' , data1.userName);
             localStorage.setItem('userType' , data1.roleCode);
+            localStorage.setItem('userCode' , data1.userCode);
+
           });
   }
  

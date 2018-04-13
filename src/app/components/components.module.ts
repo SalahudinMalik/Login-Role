@@ -18,26 +18,33 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 //import {NoopAnimationsModule} from '@angular/platform-browser/animations'
 import { CdkTableModule } from '@angular/cdk/table';
-
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { NgProgressModule } from 'ngx-progressbar';
+import { DatePipe } from '@angular/common';
+import {DashboardComponent} from '../dashboard/dashboard.component'
+import { MemberComponent } from './member/member.component';
+import { OwnerComponent } from './owner/owner.component'
 @NgModule({
   imports: [
     CommonModule,
     ComponentsRoutingModule,
+    MatFormFieldModule,
+    NgProgressModule,
+    MatInputModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     TabsModule,
     MatButtonModule,
     NgbModule,
     MatCheckboxModule,
-    //SelectionModel,
-    //NoopAnimationsModule,
     MatTableModule,
     CdkTableModule
   ],
   declarations: [
-    AgentComponent
+    AgentComponent , MemberComponent, OwnerComponent 
   ],
-  providers : [DataService]
+  providers : [DataService , DatePipe]
   
 })
 export class ComponentsModule { }

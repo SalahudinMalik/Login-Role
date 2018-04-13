@@ -1,0 +1,52 @@
+.example-container {
+    display: flex;
+    margin-top: 10px;
+    flex-direction: column;
+    max-height: 700px;
+    
+    overflow-x: auto;
+}
+.mat-header-row {
+    position: sticky;
+    top: 0;
+    background: rgb(206, 221, 226);
+    z-index: 9999;
+} 
+.example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+    margin: 2px 2px 0;
+}
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+  
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+    min-width: 700px;
+}
+.mat-cell{
+    margin: 4px;
+   
+    font-size: 12px;
+}
+/* .mat-column-code , .mat-column-dealRef , .mat-column-plotCode , .mat-column-plotRef , .mat-column-installmentNo{
+    /* flex: 0 0 50px; 
+    min-width: 40px;
+}
+.mat-column-schemeName {
+    /* flex: 0 0 200px; 
+   min-width: 100px;
+   word-wrap: break-word;
+}
+.mat-column-sectorName {
+    /* flex: 0 0 200px; 
+   min-width: 90px;
+   word-wrap: break-word;
+}
+.mat-column-instDueDate{
+    min-width: 100px;
+} */
