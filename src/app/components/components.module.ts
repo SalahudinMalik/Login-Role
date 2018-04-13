@@ -25,6 +25,9 @@ import { DatePipe } from '@angular/common';
 import {DashboardComponent} from '../dashboard/dashboard.component'
 import { MemberComponent } from './member/member.component';
 import { OwnerComponent } from './owner/owner.component'
+import { FilterPipe } from '../filter.pipe';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -42,9 +45,9 @@ import { OwnerComponent } from './owner/owner.component'
     CdkTableModule
   ],
   declarations: [
-    AgentComponent , MemberComponent, OwnerComponent 
+    AgentComponent , MemberComponent, OwnerComponent ,FilterPipe
   ],
-  providers : [DataService , DatePipe]
+  providers : [DataService , DatePipe , FilterPipe]
   
 })
 export class ComponentsModule { }

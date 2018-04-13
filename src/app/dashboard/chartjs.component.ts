@@ -59,23 +59,28 @@ export class ChartJSComponent implements OnInit{
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: string[] = [];
+  public barChartLabels1: string[] = [];
   public barChartType = 'bar';
   public barChartLegend = true;
-
+  public barChartData1: any[];
   public barChartData: any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    {data: [], label: 'Cash Inflow'},
+    {data: [], label: 'Cash Outflow'}
   ];
 
   
   
   // Pie
+  // public pieChartLabels:any;
+  // public pieChartData: any;On Hold,Cancelled,Available,Not Available,Incomplete,Re-Purchase,Sold dsf dsf 35,12,51,3,0,0,88
   public pieChartLabels: string[] = [];
   public pieChartData: number[] = [];
   public pieChartLabels1: string[] = [];
   public pieChartData1: number[] = [];
   public pieChartType = 'pie';
+
+
  constructor(
    private dataService:DataService
  ){
@@ -84,41 +89,44 @@ export class ChartJSComponent implements OnInit{
  ngOnInit(){
   this.loadLineChart();
   this.loadPieChart();
-
+  this.loadBarChart();
  }
- /*"On Hold", value: "35"}
-1
-:
-{status: "Cancelled", value: "12"}
-2
-:
-{status: "Available", value: "51"}
-3
-:
-{status: "Not Available", value: "3"}
-4
-:
-{status: "Incomplete", value: "0"}
-5
-:
-{status: "Re-Purchase", value: "0"}
-6
-:
-{status: "Sold", */
+ public loadBarChart(){
+  this.dataService.getBarChart()
+     .subscribe(data1 =>{
+      
+       data1.forEach(element => {
+         this.barChartLabels.push(element.month);
+         
+         this.barChartData[0].data.push(parseInt(element.cashInFlow));
+         this.barChartData[1].data.push(parseInt(element.cashOutFlow));
+         
+      });
+      
+      this.barChartData1 = this.barChartData;
+      this.barChartLabels1 = this.barChartLabels;
+     
+     });
+ }
  public loadPieChart(){
+  this.pieChartLabels = null;
+  this.pieChartData= null;
   this.dataService.getPieChart()
   .subscribe(data1 =>{
-    console.log(data1);
+   // console.log(data1);
+    
     data1.forEach(element => {
-      this.pieChartLabels1.push(element.status);
-      
-      this.pieChartData1.push(parseInt(element.value));
-      //this.lineChartData[1].data.push(parseInt(element.cashOutFlow));
-      
+     
+        this.pieChartLabels1.push(element.status);
+       
+        this.pieChartData1.push(parseInt(element.value));
+        // this.pieChartLabels = element.map(val => val.status);
+        // setTimeout( () => {this.pieChartData1.push(parseInt(element.value))});
    });
-   console.log(this.pieChartLabels1 + " dsf dsf " + this.pieChartData1);
+  
    this.pieChartLabels = this.pieChartLabels1;
    this.pieChartData = this.pieChartData1;
+   //console.log(this.pieChartLabels + " dsf dsf " + this.pieChartData);
   });
  }
  public loadLineChart(){

@@ -14,6 +14,8 @@ import {DashboardComponent} from '../../dashboard/dashboard.component'
 import {MemberInst} from '../../models/memberInst';
 import {DataSource} from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
+import { NgProgress } from 'ngx-progressbar';
+import { FilterPipe } from '../../filter.pipe';
 @Component({
   selector: 'app-member',
   templateUrl: './member.component.html',
@@ -40,16 +42,17 @@ export class MemberComponent implements OnInit {
   displayedColumns = ['code', 'dealRef', 'plotCode', 'plotRef' , 'sectorName', 
           'schemeName' , 'installmentNo' , 'instDueDate' , 'payable' ,'paid', 'balance'];
   
-
+  public data = '';
   public now:Date = new Date();
 
   public dataToSave:any;
   constructor(private dataService:DataService,
     private datePipe: DatePipe,
-    private dashboardComponent:DashboardComponent) { }
+    private dashboardComponent:DashboardComponent,
+    private ngProgress:NgProgress) { }
 
   ngOnInit() {
-    
+    this.ngProgress.start();
     this.dashboardComponent.validateDate();
     let code:any , dateCiteria:any;
     code = this.userCode;
@@ -63,6 +66,7 @@ export class MemberComponent implements OnInit {
           this.memberList = data;
           console.log(this.memberList);
           this.dataSource = new MatTableDataSource(this.memberList);
+          this.ngProgress.done();
         });
       // strDueDateCriteria = "";
 			// 	strODueDateCriteria = "";

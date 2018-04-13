@@ -17,7 +17,7 @@
     <nav class="sidebar-nav">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
+          <a class="nav-link" routerLinkActive="active" (click)="dboard($event)" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" *ngIf="userType.includes('Agent')" routerLinkActive="active" [routerLink]="['/components/agent']"><i class="icon-people"></i> Agent </a>

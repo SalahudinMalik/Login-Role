@@ -10,6 +10,8 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableModule} from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
+import { FullLayoutComponent } from '../layouts/full-layout.component';
+
 
 @Component({
   templateUrl: 'dashboard.component.html',
@@ -57,7 +59,9 @@ export class DashboardComponent implements OnInit {
 	// 			dateLabel = getMonthAsString(endDate.month)+ "-" +endDate.fullYear;
 
   constructor( private dataService:DataService,
-               private datePipe: DatePipe
+               private datePipe: DatePipe,
+               private router: Router,
+               private fullLayoutComponent:FullLayoutComponent
    ) { 
 
       
@@ -75,7 +79,9 @@ export class DashboardComponent implements OnInit {
    ngOnInit(){
    
     // this.validateDate();
-    
+    if(this.userType == 'Member' && !this.fullLayoutComponent.dbclick){
+      this.router.navigateByUrl("/components/member");
+    }
     // if(this.userType == 'Member'){
     //   this.dataToSave = JSON.stringify({"data" :{ code ,dateCiteria}});
     //   this.dataService.getMemberData(this.dataToSave)

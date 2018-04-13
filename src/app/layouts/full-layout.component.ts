@@ -15,8 +15,8 @@ export class FullLayoutComponent implements OnInit {
   public status: {isopen: boolean} = {isopen: false};
   public userName = localStorage.getItem('userName');
   public userType = localStorage.getItem('userType');
- 
-
+  
+  public dbclick = false;
 
   constructor (private authService:AuthService,
                private router: Router
@@ -25,7 +25,10 @@ export class FullLayoutComponent implements OnInit {
   public toggled(open: boolean): void {
     console.log('Dropdown is now: ', open);
   }
-
+  dboard(MouseEvent):void{
+    console.log(MouseEvent);
+    this.dbclick = true;
+  }
   public toggleDropdown($event: MouseEvent): void {
     $event.preventDefault();
     $event.stopPropagation();

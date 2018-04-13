@@ -69,6 +69,16 @@ export class DataService {
      
     
   }
+  getBarChart():Observable<any>{
+    this.fullurl = '';
+    this.fullurl = this.global.weburl + 'charts/BarChart';
+    
+      return  this.http.get(this.fullurl)
+      .map(result => result)
+      .catch(this.errorHandler);
+     
+    
+  }
   getMemberData(data:any):Observable<MemberInst[]>{
     this.fullurl = '';
     //this.fullurl = this.global.weburl + 'charts/MemberData/'+memberCode+'/'+ dateCriteria+'/';

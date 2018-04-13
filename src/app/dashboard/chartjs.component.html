@@ -2,8 +2,7 @@
   <div class="card-columns cols-2">
     <div class="card">
       <div class="card-header">
-        Line Chart
-        
+        Expected vs Actual Cashflow
       </div>
       <div class="card-body">
         <div class="chart-wrapper" *ngIf="datachart && linelabel">
@@ -21,14 +20,13 @@
     </div>
     <div class="card">
       <div class="card-header">
-        Bar Chart
-        
+        Cash Inflow vs Cash Outflow
       </div>
       <div class="card-body">
-        <div class="chart-wrapper">
+        <div class="chart-wrapper" *ngIf="barChartData1 && barChartLabels1">
           <canvas baseChart class="chart"
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
+          [datasets]="barChartData1"
+          [labels]="barChartLabels1"
           [options]="barChartOptions"
           [legend]="barChartLegend"
           [chartType]="barChartType"
@@ -40,10 +38,10 @@
    
     <div class="card">
       <div class="card-header">
-        Pie Chart
+        Plots Status
       </div>
       <div class="card-body">
-        <div class="chart-wrapper">
+        <div class="chart-wrapper"  *ngIf="pieChartLabels && pieChartData">
           <canvas baseChart class="chart"
           [data]="pieChartData"
           [labels]="pieChartLabels"

@@ -1,3 +1,8 @@
+<ng-progress [positionUsing]="'translate3d'" [minimum]="0.10" [maximum]="1"
+             [speed]="100" [showSpinner]="true" [direction]="'leftToRightIncreased'"
+             [color]="'#20a8d8'" [trickleSpeed]="120" [thick]="true" [ease]="'linear'">
+            </ng-progress>
+
 <div class="animated fadeIn ">
   <p class="block pl-1"> Installment Due in {{now|date: 'MMMM'}}</p>
   <div class="example-container mat-elevation-z8">
@@ -30,7 +35,7 @@
       <!-- Symbol Column -->
       <ng-container matColumnDef="plotRef">
         <mat-header-cell *matHeaderCellDef> Plot Ref </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.plotRef}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.plotRef | filter:element.plotRef}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="sectorName">
         <mat-header-cell *matHeaderCellDef> Sector </mat-header-cell>

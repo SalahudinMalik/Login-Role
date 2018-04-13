@@ -58,20 +58,22 @@ export class LoginComponent implements OnInit{
           if(!this.res.includes("Error")) {
             console.log("Success :" + this.res)
             this.authService.setToken(this.userName); 
-            
-            this.toastr.success('Successfully ', 'Login');
+            this.ngProgress.done();
+            this.toastr.success('Successfully ', 'Login' ,{closeButton :true , timeOut:500});
             this.router.navigateByUrl("/dashboard");
            
           }
           else {
             this.hits++;
             console.log(this.hits);
+            this.ngProgress.done();
             this.oldUserName = this.userName;
             this.toastr.warning(this.res , 'ERROR');
           }
         },
         error =>{
           this.errorMsg = error
+          this.ngProgress.done();
           this.toastr.error("Server Error" , this.errorMsg);
         });
 

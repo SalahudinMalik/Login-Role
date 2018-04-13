@@ -40,6 +40,7 @@ import { HttpClientModule ,HttpClient } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -71,6 +72,7 @@ import { AuthGuard } from './auth.guard';
     AsideToggleDirective,
     SimpleLayoutComponent
   ],
+  exports : [FullLayoutComponent],
   providers: [
     AuthService,
     Globals,
